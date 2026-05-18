@@ -1,27 +1,75 @@
-# AppTvmaze
+# TV Maze - Series y Películas
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+Proyecto Angular 17 que consume la API de TV Maze para mostrar series y películas con buscador, paginación y modal de detalle.
 
-## Development server
+## API
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+[TV Maze API](https://www.tvmaze.com/api) - API gratuita, sin autenticación, con CORS habilitado.
 
-## Code scaffolding
+## Funcionalidades
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Buscador:** Consulta el endpoint `/search/shows?q=` de la API con debounce de 500ms
+- **Paginación:** MatPaginator de Angular Material con paginación local (instantánea tras primera carga)
+- **Modal de detalle:** MatDialog con información completa del show (horario, rating, géneros, cadena, IMDb, etc.)
+- **Pipe personalizado:** `FilterShowsPipe` para filtrado local (referencia)
+- **Cache en memoria:** Respuestas cacheadas por 5 minutos para mejorar rendimiento
+- **Optimización de imágenes:** `loading="lazy"` para carga progresiva
+
+## Requisitos
+
+- Node.js 18+
+- Angular CLI 17
+
+## Instalación
+
+```bash
+npm install
+```
+
+## Ejecución
+
+```bash
+npm start
+```
+
+Abre [http://localhost:4200](http://localhost:4200) en tu navegador.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm run build
+```
 
-## Running unit tests
+El output se genera en `dist/`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Tecnologías
 
-## Running end-to-end tests
+- Angular 17 (standalone components, signals, new control flow)
+- Angular Material 17
+- RxJS (debounce, debounceTime)
+- TypeScript strict mode
+- TV Maze REST API
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Estructura del proyecto
 
-## Further help
+```
+src/app/
+├── models/          → interfaces TypeScript
+├── services/        → TvMazeService (HTTP + cache)
+├── pipes/           → FilterShowsPipe (referencia)
+└── components/
+    ├── show-search/    → buscador con debounce
+    ├── show-list/       → lista + paginación
+    ├── show-card/       → tarjeta de serie
+    └── show-detail/     → modal de detalle
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Cumplimiento de la actividad
+
+- ✅ API gratuita, segura y sin clave
+- ✅ Buscador usando endpoint de la API
+- ✅ Pipe personalizado (investigado y documentado)
+- ✅ Paginación con Angular Material
+- ✅ Modal con información detallada
+- ✅ Angular Material integrado
+- ✅ Angular 17 standalone (no NgModule)
