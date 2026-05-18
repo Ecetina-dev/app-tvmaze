@@ -64,12 +64,3 @@ src/app/
     └── show-detail/     → modal de detalle
 ```
 
-## Cumplimiento de la actividad
-
-- ✅ API gratuita, segura y sin clave
-- ✅ Buscador usando endpoint de la API
-- ✅ Pipe personalizado (investigado y documentado)
-- ✅ Paginación con Angular Material
-- ✅ Modal con información detallada
-- ✅ Angular Material integrado
-- ✅ Angular 17 standalone (no NgModule)
